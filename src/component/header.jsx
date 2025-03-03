@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Header = () => {
 	return (
 		<div className="justify-between flex">
@@ -7,12 +6,20 @@ const Header = () => {
 				<h1 className="font-bold text-3xl text-[black]">Booking-app</h1>
 			</div>
 
-			<div className="hidden md:flex">
+			<div className="hidden md:flex cursor-pointer">
 				<ul className="flex gap-[40px] ">
-					<li className="text-xl">Home</li>
-					<li className="text-xl">Ticket</li>
-					<li className="text-xl">Explore</li>
-					<li className="text-xl">Activity</li>
+					<a href="/#home">
+						<li className="text-xl">Home</li>
+					</a>
+					<a href="/#ticket">
+						<li className="text-xl">Ticket</li>
+					</a>
+					<a href="/#explore">
+						<li className="text-xl">Explore</li>
+					</a>
+					<a to="/#activity">
+						<li className="text-xl">Activity</li>
+					</a>
 				</ul>
 			</div>
 

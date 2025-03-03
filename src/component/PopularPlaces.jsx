@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 const PopularPlaces = () => {
 	const images = [
 		{
@@ -57,7 +57,8 @@ const PopularPlaces = () => {
 							className="w-[260px] h-[270px] rounded-2xl"
 						/>
 						<h1 className="font-bold text-[18px]">{image.place}</h1>
-						<p className="ml-[20px]">
+						<p className="flex gap-[5px]">
+							<LocationOnIcon />
 							{image.capital}, <span>{image.country}</span>
 						</p>
 					</div>
