@@ -8,7 +8,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 	const navigate = useNavigate();
 	const [selectedRooms, setSelectedRooms] = useState([]);
 	const { data, loading, error } = useFetch(
-		`https://booking-app-phi-weld.vercel.app/api/hotel/room/${hotelId}`
+		`https://booking-app-liart-zeta.vercel.app/api/hotel/room/${hotelId}`
 	);
 	const { dates } = useContext(SearchContext);
 
