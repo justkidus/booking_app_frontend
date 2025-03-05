@@ -14,7 +14,7 @@ const Booking = () => {
 	const { id } = useParams();
 	console.log('this is the id', id);
 	const { data, reFetch, loading, error } = useFetch(
-		`http://localhost:5000/api/hotel/getahotel/${id}`
+		`https://booking-app-backend-1ckv.vercel.app/api/hotel/getahotel/${id}`
 	);
 	console.log(data);
 	const { user } = useContext(AuthContext);
