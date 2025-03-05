@@ -47,7 +47,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 			await Promise.all(
 				selectedRooms.map((roomId) => {
 					const res = axios.put(
-						`https://booking-app-backend-1ckv.vercel.app/api/room/availability/${roomId}`,
+						`https://booking-app-liart-zeta.vercel.app/api/room/availability/${roomId}`,
 						{
 							dates: All_Dates,
 						}
