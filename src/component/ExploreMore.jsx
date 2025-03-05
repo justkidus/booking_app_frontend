@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useFetch from '../hooks/useFetch';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const ExploreMore = () => {
 	const [activeButton, setActiveButton] = useState('popularPlaces'); // Track the active button
@@ -50,7 +51,7 @@ const ExploreMore = () => {
 	];
 
 	const { data, loading, error } = useFetch(
-		'http://localhost:5000/api/hotel/categorized'
+		'https://booking-app-phi-weld.vercel.app/api/hotel/categorized'
 	);
 	// console.log('Fetched Data :', data[5]);
 	const handleButtonClick = (buttonName, index) => {
@@ -106,41 +107,30 @@ const ExploreMore = () => {
 					Filters
 				</div>
 			</div>
-			{
-				data[select] && data[select].hotels.length !== 0
-					? data[select].hotels.map((hotel, hotelIndex) => (
-							<div>
-								<img
-									src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-									alt="good"
-									className="w-full h-48 object-cover"
-								/>
-								<h1 className="text-white">{hotel.name}</h1>
-							</div>
-					  ))
-					: `their is no list for ${activeButton}`
-				//   'sdfghjg'
-				// <div className="grid grid-cols-3 gap-6 mt-[50px]">
-				// 	{images.map((image) => (
-				// 		<div
-				// 			key={image.name}
-				// 			className="bg-white rounded-2xl shadow-lg overflow-hidden"
-				// 		>
-				// 			<img
-				// 				src={image.image_link}
-				// 				alt={image.name}
-				// 				className="w-full h-48 object-cover"
-				// 			/>
-				// 			<div className="p-4">
-				// 				<h1 className="text-xl font-bold">{image.name}</h1>
-				// 				<p className="text-gray-600">
-				// 					{image.city}, {image.country}
-				// 				</p>
-				// 			</div>
-				// 		</div>
-				// 	))}
-				// </div>
-			}
+			{loading ? (
+				'loading...'
+			) : (
+				<div className="grid grid-cols-3 grid-rows-auto gap-[30px] bg-white rounded-2xl shadow-lg overflow-hidden">
+					{data[select] && data[select].hotels.length !== 0
+						? data[select].hotels.map((hotel, hotelIndex) => (
+								<div className="mt-[50px]">
+									<img
+										src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+										alt="good"
+										className="w-[300px] h-50 bg-white rounded-2xl shadow-lg overflow-hidden"
+									/>
+									<h1 className="text-white">{hotel.name}</h1>
+									<h1>
+										<h1 className="text-xl flex">
+											<LocationOnIcon />
+											{hotel.city} , {hotel.country}
+										</h1>
+									</h1>
+								</div>
+						  ))
+						: `their is no list for ${activeButton}`}
+				</div>
+			)}
 		</div>
 	);
 };

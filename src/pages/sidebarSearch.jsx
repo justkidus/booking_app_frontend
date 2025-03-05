@@ -137,8 +137,12 @@
 
 import React, { useState } from 'react';
 import useFetch from '../hooks/useFetch';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // Main style file
+import 'react-date-range/dist/theme/default.css'; // Theme styles
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const SideBar = () => {
 	const location = useLocation();
@@ -158,8 +162,8 @@ const SideBar = () => {
 	);
 	const [min, setMin] = useState(undefined);
 	const [max, setMax] = useState(undefined);
-	const { data, loading, error } = useFetch(
-		`http://localhost:5000/api/hotel/getallhotel?city=${destination}&min=${min}&max=${max}&limit=5`
+	const { data, loading, error, reFetch } = useFetch(
+		`http://localhost:5000/api/hotel/getallhotel?city=${destination}&min=${min}&max=${max}&limit=10`
 	);
 
 	const handleClick = () => {
@@ -167,46 +171,53 @@ const SideBar = () => {
 	};
 
 	return (
-		<div>
+		<div className="flex bg-[#313743] text-white w-[100%]">
 			{/* <Navbar />
 			<Header type="list" /> */}
-			<div className="listContainer">
-				<div className="listWrapper">
-					<div className="listSearch">
-						<h1 className="lsTitle">Search</h1>
+			<div className="ml-[40px] mt-[30px] leading-[40px] w-[30%] bg-[#313743] border-2 h-[70vh]">
+				<div className="flex justify-center items-center">
+					<div className="ml-[20px]">
+						<h1 className="text-[26px] mb-[20px] text-center mt-[5px]">
+							Search
+						</h1>
 						<div className="lsItem">
 							<label>Destination</label>
 							<input
 								placeholder={destination}
 								type="text"
 								onChange={(e) => setDestination(e.target.value)}
+								className="ml-[20px] rounded-[20px] placeholder:text-center border-2 w-[160px] h-[30px]"
 							/>
 						</div>
 						<div className="lsItem">
 							<label>Check-in Date</label>
-							<span onClick={() => setOpenDate(!openDate)}>{`${format(
-								dates[0].startDate,
+							<span
+								onClick={() => setOpenDate(!openDate)}
+								className="ml-[30px] border-2 rounded-2xl"
+							>{`${format(dates[0].startDate, 'MM/dd/yyyy')} to ${format(
+								dates[0].endDate,
 								'MM/dd/yyyy'
-							)} to ${format(dates[0].endDate, 'MM/dd/yyyy')}`}</span>
+							)}`}</span>
 							{openDate && (
 								<DateRange
 									onChange={(item) => setDates([item.selection])}
 									minDate={new Date()}
 									ranges={dates}
+									className="p-[10px]"
 								/>
 							)}
 						</div>
-						<div className="lsItem">
-							<label>Options</label>
+						<div className="">
+							<label className="text-xl ">Options</label>
 							<div className="lsOptions">
-								<div className="lsOptionItem">
-									<span className="lsOptionText">
+								<div className="">
+									<span className="">
 										Min price <small>per night</small>
 									</span>
 									<input
 										type="number"
 										onChange={(e) => setMin(e.target.value)}
-										className="lsOptionInput"
+										className="rounded-2xl border-2 ml-[10px] h-[35px]"
 									/>
 								</div>
 								<div className="lsOptionItem">
@@ -216,7 +227,7 @@ const SideBar = () => {
 									<input
 										type="number"
 										onChange={(e) => setMax(e.target.value)}
-										className="lsOptionInput"
+										className="rounded-2xl border-2 ml-[10px] h-[35px]"
 									/>
 								</div>
 								<div className="lsOptionItem">
@@ -224,7 +235,7 @@ const SideBar = () => {
 									<input
 										type="number"
 										min={1}
-										className="lsOptionInput"
+										className="rounded-2xl border-2 ml-[10px] h-[35px] placeholder:text-center placeholder:text-white text-[20px]"
 										placeholder={options.adult}
 									/>
 								</div>
@@ -233,7 +244,7 @@ const SideBar = () => {
 									<input
 										type="number"
 										min={0}
-										className="lsOptionInput"
+										className="rounded-2xl border-2 ml-[10px] h-[35px] placeholder:text-center placeholder:text-white text-[20px]"
 										placeholder={options.children}
 									/>
 								</div>
@@ -242,43 +253,97 @@ const SideBar = () => {
 									<input
 										type="number"
 										min={1}
-										className="lsOptionInput"
+										className="rounded-2xl border-2 ml-[10px] h-[35px] placeholder:text-center placeholder:text-white text-[20px]"
 										placeholder={options.room}
 									/>
 								</div>
 							</div>
 						</div>
-						<button onClick={handleClick}>Search</button>
-					</div>
-					<div className="listResult">
-						{loading ? (
-							'loading'
-						) : (
-							<>
-								{data.map((item) => (
-									<div className="fpItem" key={item._id}>
-										<img
-											src="https://picsum.photos/150/150"
-											alt=""
-											className=""
-										/>
-										<span className="fpName">{item.name}</span>
-										<span className="fpCity">{item.city}</span>
-										<span className="fpPrice">
-											Starting from ${item.cheapestPrice}
-										</span>
-										{item.rating && (
-											<div className="fpRating">
-												<button>{item.rating}</button>
-												<span>Excellent</span>
-											</div>
-										)}
-									</div>
-								))}
-							</>
-						)}
+						<button
+							onClick={handleClick}
+							className="ml-[110px] text-xl rounded-2xl border-2 px-[15px] mt-[20px]"
+						>
+							Search
+						</button>
 					</div>
 				</div>
+			</div>
+			<div className="listResult">
+				{loading ? (
+					'loading'
+				) : (
+					<>
+						<div className="w-[50%] ml-[20px] mt-[30px] ">
+							<div className="overflow-auto scroll-smooth h-[90vh] w-[750px]">
+								{data.map((item) => (
+									<div
+										className="flex bg-white w-[750px] h-auto border-2 border-black mb-[20px] justify-evenly leading-[30px]"
+										key={item._id}
+									>
+										<div className="">
+											<img
+												src="https://picsum.photos/150/150"
+												alt=""
+												className="w-[220px] h-[220px] m-[10px]"
+											/>
+										</div>
+										<div className="mt-[5px] w-[300px] leading-[28px] ml-[10px]">
+											<span className="text-black font-bold text-2xl">
+												{item.name}
+											</span>
+											<br />
+											<span className="text-black ml-[-10px]">
+												<LocationOnIcon />
+												{/* {item.city},{item.country} */}
+												{item.address}
+											</span>
+											<br />
+											<span className="text-black">{item.distance}.</span>
+											<br />
+											<span className="bg-green-600 p-[2px]">
+												Free airport taxi
+											</span>
+											<br />
+											<span className="text-black">{item.description}</span>
+											<br />
+											<span className="text-black">{item.title}</span>
+											<br />
+											<span className="text-white bg-red-600 p-[2px]">
+												Free Cancellation
+											</span>
+											<br />
+										</div>
+										<div className="mt-[25px] justify-end mr-[-15px]">
+											<span className="text-black font-bold">
+												Starting from <br />
+												<span className="text-xl mr-[20px]">
+													${item.cheapestPrice}
+												</span>
+											</span>
+											{item.rating && (
+												<div className="text-black">
+													<button className="text-xl mr-[5px]">
+														{item.rating}{' '}
+													</button>
+													<span className="text-green-500 font-bold">
+														Excellent
+													</span>
+													<br />
+													<br />
+													<button className="bg-blue-500 p-[3px] text-white">
+														<Link to={`/book/${item._id}`}>
+															<h1>See Availability</h1>
+														</Link>
+													</button>
+												</div>
+											)}
+										</div>
+									</div>
+								))}
+							</div>
+						</div>
+					</>
+				)}
 			</div>
 		</div>
 	);

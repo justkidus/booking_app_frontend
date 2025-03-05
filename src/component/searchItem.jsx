@@ -49,9 +49,19 @@ const SearchItem = ({ type }) => {
 
 	const handleSearch = () => {
 		console.log('Before dispatch:', { destination, dates, options }); // Debugging
-		dispatch({ type: 'NEW_SEARCH', payload: { destination, dates, options } });
-		console.log('After dispatch:', { destination, dates, options }); // Debugging
-		navigate('/search', { state: { destination, dates, options } });
+
+		dispatch({
+			type: 'NEW_SEARCH',
+			payload: { destination, dates, options },
+		});
+		console.log('After dispatch:', {
+			destination,
+			dates,
+			options,
+		}); // Debugging
+		navigate('/search', {
+			state: { destination, dates, options },
+		});
 	};
 	return (
 		<div className="flex absolute bg-white w-[80%] h-[180px] rounded-4xl left-[115px] bottom-[-45px]">
