@@ -51,7 +51,7 @@ const ExploreMore = () => {
 	];
 
 	const { data, loading, error } = useFetch(
-		'https://booking-app-phi-weld.vercel.app/api/hotel/categorized'
+		'https://booking-app-backend-1ckv.vercel.app/api/hotel/categorized'
 	);
 	// console.log('Fetched Data :', data[5]);
 	const handleButtonClick = (buttonName, index) => {

@@ -163,7 +163,7 @@ const SideBar = () => {
 	const [min, setMin] = useState(undefined);
 	const [max, setMax] = useState(undefined);
 	const { data, loading, error, reFetch } = useFetch(
-		`http://localhost:5000/api/hotel/getallhotel?city=${destination}&min=${min}&max=${max}&limit=10`
+		`https://booking-app-backend-1ckv.vercel.app/api/hotel/getallhotel?city=${destination}&min=${min}&max=${max}&limit=10`
 	);
 
 	const handleClick = () => {
