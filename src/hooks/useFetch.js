@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const useFetch = (url) => {
-	const [data, setData] = useState([]);
+	const [data, setData] = useState();
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
@@ -13,7 +13,7 @@ const useFetch = (url) => {
 			try {
 				const res = await axios.get(url);
 				setData(res.data);
-				console.log(`API Response :`, res.data);
+				// console.log(`API Response :`, res.data);
 			} catch (error) {
 				setError(true);
 				console.error('Error fetcing data :', error);
