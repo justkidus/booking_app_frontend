@@ -111,8 +111,6 @@ const ExploreMore = () => {
 	const { data, loading, error } = useFetch(
 		'https://bookingappbackend-production.up.railway.app/api/hotel/categorized'
 	);
-	// 'https://booking-app-backend-three.vercel.app/api/hotel/categorized'
-
 	console.log('Fetched Data :', data);
 	const handleButtonClick = (buttonName, index) => {
 		setActiveButton(buttonName);
@@ -165,8 +163,6 @@ const ExploreMore = () => {
 			</div>
 			{loading ? (
 				'loading...'
-			) : error ? (
-				<div>Error: {error}</div>
 			) : (
 				<div className="grid grid-cols-3 grid-rows-auto gap-[30px] bg-white rounded-2xl shadow-lg overflow-hidden">
 					{data && data[select] && data[select].hotels.length !== 0 ? (
