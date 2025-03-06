@@ -15,7 +15,6 @@ const Booking = () => {
 	console.log('this is the id', id);
 	const { data, reFetch, loading, error } = useFetch(
 		`https://bookingappbackend-production.up.railway.app/api/hotel/getahotel/${id}`
-		// `https://booking-app-backend-three.vercel.app/api/hotel/getahotel/${id}`
 	);
 	console.log(data);
 	const { user } = useContext(AuthContext);
@@ -71,7 +70,7 @@ const Booking = () => {
 			<div>
 				{open ? (
 					<div>
-						<h1>{data.name}</h1>
+						{/* <h1>{data.name}</h1> */}
 						<h3>{data.address}</h3>
 						<p>Excellent location ${data.distance} from center</p>
 						<p>
