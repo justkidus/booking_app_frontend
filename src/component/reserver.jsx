@@ -9,7 +9,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 	const [selectedRooms, setSelectedRooms] = useState([]);
 	const { data, loading, error } = useFetch(
 		// `https://booking-app-backend-three.vercel.app/api/hotel/room/${hotelId}`
-		`https://booking-app-backend-three.vercel.app/api/hotel/room/${hotelId}`
+		`https://bookingappbackend-production.up.railway.app/api/hotel/room/${hotelId}`
 	);
 	const { dates } = useContext(SearchContext);
 

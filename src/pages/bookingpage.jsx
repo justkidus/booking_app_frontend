@@ -14,7 +14,7 @@ const Booking = () => {
 	const { id } = useParams();
 	console.log('this is the id', id);
 	const { data, reFetch, loading, error } = useFetch(
-		`https://booking-app-backend-three.vercel.app/api/hotel/getahotel/${id}`
+		`https://bookingappbackend-production.up.railway.app/api/hotel/getahotel/${id}`
 		// `https://booking-app-backend-three.vercel.app/api/hotel/getahotel/${id}`
 	);
 	console.log(data);

@@ -109,7 +109,7 @@ const ExploreMore = () => {
 	const [activeButton, setActiveButton] = useState('Popular Destinations');
 	const [select, setSelect] = useState(0);
 	const { data, loading, error } = useFetch(
-		'https://booking-app-backend-three.vercel.app/api/hotel/categorized'
+		'https://bookingappbackend-production.up.railway.app/api/hotel/categorized'
 	);
 	// 'https://booking-app-backend-three.vercel.app/api/hotel/categorized'
 
