@@ -64,7 +64,7 @@ const SearchItem = ({ type }) => {
 		});
 	};
 	return (
-		<div className="flex absolute bg-white w-[80%] h-[180px] rounded-4xl left-[115px] bottom-[-45px]">
+		<div className="flex absolute bg-white w-[80%] h-[180px] rounded-4xl left-[115px] bottom-[-100px]">
 			<div className="ml-[50px] mt-[10px]">
 				<div className="flex">
 					<div className="grid absolute">

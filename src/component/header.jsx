@@ -7,9 +7,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const Header = () => {
 	const { user } = useContext(AuthContext);
 	return (
-		<div className="justify-between flex">
+		<div className="justify-between md:gap-[10px] flex">
 			<div>
-				<h1 className="font-bold text-3xl text-[black]">Booking-app</h1>
+				<h1 className="font-bold text-2xl text-[black] sm:text-3xl">
+					Booking-app
+				</h1>
 			</div>
 
 			<div className="hidden md:flex cursor-pointer">
@@ -32,16 +34,16 @@ const Header = () => {
 			<div className="flex gap-[20px]">
 				{user ? (
 					<div className="flex gap-[7px]">
-						<AccountCircleIcon className="w-[25px] h-[15px] text-gray-500" />{' '}
-						<h1 className="text-[20px] mt-[-3px]">{user.username}</h1>
+						<AccountCircleIcon className="w-[35px] h-[25px] text-gray-500 mt-[10px]" />{' '}
+						<h1 className="text-[20px] mt-[5px] font-bold">{user.username}</h1>
 					</div>
 				) : (
 					<div className="">
-						<button className="text-xl mr-[20px]">
+						<button className="text-xl mr-[20px] cursor-pointer ">
 							<Link to="/login">sign in</Link>
 						</button>
-						<button className="text-xl">
-							<Link to="/signUp">sign up</Link>
+						<button className="text-xl cursor-pointer">
+							<Link to="/signup ">sign up</Link>
 						</button>
 					</div>
 				)}

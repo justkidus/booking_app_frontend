@@ -9,6 +9,8 @@ import Header from './component/header.jsx';
 import { SearchContextProvider } from './context/searchContext.jsx';
 import Login from './pages/login.jsx';
 import { AuthContextProvider } from './context/authContext.jsx';
+import signUp from './pages/signUp.jsx';
+import SignUp from './pages/signUp.jsx';
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<AuthContextProvider>
@@ -23,6 +25,7 @@ createRoot(document.getElementById('root')).render(
 						<Route path="/book/:id" element={<Booking />} />
 						<Route path="/search" element={<SideBar />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<SignUp />} />
 						{/* <Route path="/ticket" element={<TicketPage />} /> */}
 					</Routes>
 				</Router>

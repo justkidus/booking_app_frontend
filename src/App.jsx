@@ -24,14 +24,14 @@ function App() {
 	// }, [location]);
 	return (
 		<>
-			<div className="bg-white mr-[40px] ml-[40px] mt-[40px] scroll-mt-16">
-				<section className="mt-[40px] ml-[30px]">
+			<div className="bg-white mr-[40px] ml-[40px] scroll-mt-16">
+				<section className="mt-[10px]">
 					<LandingPage />
 				</section>
 				<section>
 					<SearchItem />
 				</section>
-				<section className="mt-[100px]">
+				<section className="mt-[95vh]">
 					<PopularPlaces />
 				</section>
 				<section className="mt-[50px]">
