@@ -51,7 +51,7 @@ const SignUp = () => {
 
 		try {
 			const response = await axios.post(
-				'http://localhost:5000/api/user/register',
+				'https://bookingappbackend-production.up.railway.app/api/user/register',
 				formData
 			);
 			setSuccess(response.data.message);

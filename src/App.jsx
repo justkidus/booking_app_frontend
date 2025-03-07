@@ -5,7 +5,7 @@ import SearchItem from './component/searchItem';
 import PopularPlaces from './component/PopularPlaces';
 import ExploreMore from './component/ExploreMore';
 import TicketPage from './pages/ticket.jsx';
-
+import { ToastContainer } from 'react-toastify';
 // import { useLocation } from 'react-router-dom';
 function App() {
 	// const location = useLocation();
@@ -40,6 +40,8 @@ function App() {
 				<section className="mt-[50px]">
 					<TicketPage />
 				</section>
+
+				<ToastContainer />
 			</div>
 		</>
 	);
