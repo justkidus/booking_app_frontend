@@ -163,7 +163,7 @@ const SideBar = () => {
 	const [min, setMin] = useState(undefined);
 	const [max, setMax] = useState(undefined);
 	const { data, loading, error, reFetch } = useFetch(
-		// `https://booking-app-backend-three.vercel.app/api/hotel/getallhotel?city=${destination}&min=${min}&max=${max}&limit=10`
+		// `http://localhost:5000/api/hotel/getallhotel?min=1&max=1000&limit=5`
 		`https://bookingappbackend-production.up.railway.app/api/hotel/getallhotel?min=1&max=1000&limit=5`
 	);
 

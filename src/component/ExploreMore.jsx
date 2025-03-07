@@ -110,6 +110,7 @@ const ExploreMore = () => {
 	const [select, setSelect] = useState(0);
 	const { data, loading, error } = useFetch(
 		'https://bookingappbackend-production.up.railway.app/api/hotel/categorized'
+		// `http://localhost:5000/api/hotel/categorized`
 	);
 	console.log('Fetched Data :', data);
 	const handleButtonClick = (buttonName, index) => {
