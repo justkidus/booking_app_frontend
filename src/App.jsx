@@ -31,7 +31,7 @@ function App() {
 				<section>
 					<SearchItem />
 				</section>
-				<section className="mt-[95vh]">
+				<section className="mt-[25vh]">
 					<PopularPlaces />
 				</section>
 				<section className="mt-[50px]">
