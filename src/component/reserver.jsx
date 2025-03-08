@@ -184,27 +184,38 @@ const Reserve = ({ setOpen, hotelId }) => {
 	}
 
 	return (
-		<div className="reserve" style={{ color: 'black' }}>
-			<div className="rContainer">
-				<BedIcon className="rClose" onClick={() => setOpen(false)} />
+		<div
+			className="w-[100vw] h-[10vh] bg-[black] fixed top-0 left-0 flex items-center justify-center"
+			style={{ color: 'black' }}
+		>
+			<div className="w-[400px] relative p-[50px] bg-white">
+				<BedIcon
+					className="absolute top-0 right-0 cursor-pointer "
+					onClick={() => setOpen(false)}
+				/>
 				<span>Select your rooms</span>
 
 				{/* Render the rooms only if data is available */}
 				{data && Array.isArray(data) ? (
 					data.map((item) => (
-						<div className="tItem" key={item._id}>
-							<div className="rItemInfo">
-								<div className="rTitle">{item.title}</div>
-								<div className="rDesc">{item.desc}</div>
-								<div className="rMax">
+						<div
+							className="flex items-center gap-[50px] p-[20px]"
+							key={item._id}
+						>
+							<div className="flex flex-col gap-[5px]">
+								<div className="font-bold">{item.title}</div>
+								<div className="font-bold">{item.desc}</div>
+								<div className="text-[12px]">
 									Max People allowed: <b>{item.maxPeople}</b>
 								</div>
-								<div className="rPrice">{item.price}</div>
+								<div className="font-bold flex-wrap gap-[5px] text-gray text-[8px]">
+									{item.price}
+								</div>
 							</div>
-							<div className="rSelectRooms">
-								<div className="room">
+							<div className="flex">
+								<div className="flex flex-col">
 									{item.roomNumbers.map((roomNumber) => (
-										<div className="room" key={roomNumber._id}>
+										<div className="flex flex-col" key={roomNumber._id}>
 											<label>{roomNumber.number}</label>
 											<input
 												type="checkbox"
