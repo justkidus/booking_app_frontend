@@ -164,7 +164,7 @@ const SideBar = () => {
 	const [max, setMax] = useState(undefined);
 	const { data, loading, error, reFetch } = useFetch(
 		// `http://localhost:5000/api/hotel/getallhotel?min=1&max=1000&limit=5`
-		`https://bookingappbackend-production.up.railway.app/api/hotel/getallhotel?min=1&max=1000&limit=5`
+		`https://bookingappbackend-production.up.railway.app/api/hotel/getallhotel?min=1&max=1000&limit=100`
 	);
 
 	const handleClick = () => {
