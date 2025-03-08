@@ -184,44 +184,100 @@ const Reserve = ({ setOpen, hotelId }) => {
 	}
 
 	return (
-		<div
-			className="w-[100vw] h-[10vh] bg-[black] fixed top-0 left-0 flex items-center justify-center"
-			style={{ color: 'black' }}
-		>
-			<div className="w-[400px] relative p-[50px] bg-white mt-[600px] overflow-auto scroll-smooth">
+		// <div
+		// 	className="w-[100vw] h-[10vh] bg-[black] fixed top-0 left-0 flex items-center justify-center"
+		// 	style={{ color: 'black' }}
+		// >
+		// 	<div className="w-[400px] relative p-[50px] bg-white mt-[600px] overflow-auto scroll-smooth">
+		// 		<BedIcon
+		// 			className="absolute top-0 right-0 cursor-pointer "
+		// 			onClick={() => setOpen(false)}
+		// 		/>
+		// 		<span>Select your rooms</span>
+
+		// 		{/* Render the rooms only if data is available */}
+		// 		{data && Array.isArray(data) ? (
+		// 			data.map((item) => (
+		// 				<div
+		// 					className="flex items-center gap-[50px] p-[20px]"
+		// 					key={item._id}
+		// 				>
+		// 					<div className="flex flex-col gap-[5px]">
+		// 						<div className="font-bold">{item.title}</div>
+		// 						<div className="font-bold">{item.desc}</div>
+		// 						<div className="text-[12px]">
+		// 							Max People allowed: <b>{item.maxPeople}</b>
+		// 						</div>
+		// 						<div className="font-bold flex-wrap gap-[5px] text-gray text-[8px]">
+		// 							{item.price}
+		// 						</div>
+		// 					</div>
+		// 					<div className="flex">
+		// 						<div className="flex flex-col">
+		// 							{item.roomNumbers.map((roomNumber) => (
+		// 								<div className="flex flex-col" key={roomNumber._id}>
+		// 									<label>{roomNumber.number}</label>
+		// 									<input
+		// 										type="checkbox"
+		// 										value={roomNumber._id}
+		// 										onChange={handleSelect}
+		// 										disabled={!isAvailable(roomNumber)}
+		// 									/>
+		// 								</div>
+		// 							))}
+		// 						</div>
+		// 					</div>
+		// 				</div>
+		// 			))
+		// 		) : (
+		// 			<p>No rooms available.</p> // Handle case where no rooms are available
+		// 		)}
+
+		// 		<button onClick={handleClick} className="rButton">
+		// 			Reserve Now
+		// 		</button>
+		// 	</div>
+		// </div>
+
+		<div className="w-screen h-[10vh] bg-black fixed top-0 left-0 flex items-center justify-center text-white">
+			<div className="w-[400px] relative p-[50px] bg-white overflow-auto scroll-smooth rounded-lg shadow-lg">
 				<BedIcon
-					className="absolute top-0 right-0 cursor-pointer "
+					className="absolute top-3 right-3 cursor-pointer text-gray-600 hover:text-gray-900"
 					onClick={() => setOpen(false)}
 				/>
-				<span>Select your rooms</span>
+				<span className="text-lg font-semibold">Select your rooms</span>
 
 				{/* Render the rooms only if data is available */}
-				{data && Array.isArray(data) ? (
+				{data && Array.isArray(data) && data.length > 0 ? (
 					data.map((item) => (
 						<div
-							className="flex items-center gap-[50px] p-[20px]"
+							className="flex items-center gap-4 p-4 border-b"
 							key={item._id}
 						>
-							<div className="flex flex-col gap-[5px]">
-								<div className="font-bold">{item.title}</div>
-								<div className="font-bold">{item.desc}</div>
-								<div className="text-[12px]">
+							<div className="flex flex-col gap-1">
+								<div className="font-bold text-lg">{item.title}</div>
+								<div className="text-gray-600">{item.desc}</div>
+								<div className="text-sm">
 									Max People allowed: <b>{item.maxPeople}</b>
 								</div>
-								<div className="font-bold flex-wrap gap-[5px] text-gray text-[8px]">
+								<div className="text-gray-500 text-sm font-bold">
 									{item.price}
 								</div>
 							</div>
 							<div className="flex">
 								<div className="flex flex-col">
 									{item.roomNumbers.map((roomNumber) => (
-										<div className="flex flex-col" key={roomNumber._id}>
-											<label>{roomNumber.number}</label>
+										<div
+											className="flex items-center gap-2"
+											key={roomNumber._id}
+										>
+											<label className="text-sm">{roomNumber.number}</label>
 											<input
 												type="checkbox"
 												value={roomNumber._id}
 												onChange={handleSelect}
 												disabled={!isAvailable(roomNumber)}
+												className="accent-blue-500 cursor-pointer"
 											/>
 										</div>
 									))}
@@ -230,10 +286,13 @@ const Reserve = ({ setOpen, hotelId }) => {
 						</div>
 					))
 				) : (
-					<p>No rooms available.</p> // Handle case where no rooms are available
+					<p className="text-center text-gray-500">No rooms available.</p>
 				)}
 
-				<button onClick={handleClick} className="rButton">
+				<button
+					onClick={handleClick}
+					className="bg-blue-600 text-white py-2 px-4 rounded-md w-full mt-4 hover:bg-blue-700 transition"
+				>
 					Reserve Now
 				</button>
 			</div>
