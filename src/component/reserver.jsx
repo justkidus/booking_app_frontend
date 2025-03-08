@@ -188,7 +188,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 			className="w-[100vw] h-[10vh] bg-[black] fixed top-0 left-0 flex items-center justify-center"
 			style={{ color: 'black' }}
 		>
-			<div className="w-[400px] relative p-[50px] bg-white mt-[100px]">
+			<div className="w-[400px] relative p-[50px] bg-white mt-[400px]">
 				<BedIcon
 					className="absolute top-0 right-0 cursor-pointer "
 					onClick={() => setOpen(false)}
